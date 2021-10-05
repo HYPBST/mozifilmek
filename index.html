@@ -9,6 +9,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Document</title>
+    <script>
+        let lista=new Array();
+        let torol=false;
+        class Film{
+            constructor(nev,rendezo,ev){
+                this.nev=nev;
+                this.rendezo=rendezo;
+                this.kiadasi_ev=ev;
+            }
+        }
+        function submit(){
+            let nev=document.getElementById("nev").value;
+            let rendezo=document.getElementById("rendezo").value;
+            let ev=document.getElementById("kiad_ev").value;
+            console.log(""+nev+rendezo+ev);
+            if(nev!=""&&rendezo!=""&&ev>0){
+                let f=new Film(nev,rendezo,ev);
+                lista.push(f);
+            }else{
+                alert("minden adatot ki kell tölteni és az év nem lehet nulla vagy kisebb");
+            }
+
+        }
+        function tabla(){
+            let tabla="";
+            if(!torol){
+
+
+                torol=true;
+            }else{
+
+
+                torol=false;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container" style="width: 50%;">
@@ -25,8 +61,8 @@
               <label for="kiad_ev">Kiadási év</label>
               <input type="number" class="form-control" id="kiad_ev">
             </div>
-            <button onsubmit="" type="submit" class="btn btn-primary">Hozzáad</button>
-            <button onclick=""class="btn btn-info">Listázás</button>
+            <button onsubmit="submit()" type="submit" class="btn btn-primary">Hozzáad</button>
+            <button onclick="tabla()"class="btn btn-info">Listázás</button>
           </form>
     </div>
     <div class="container" style="width: 50%; padding-top: 2.5vh;display: none;">
