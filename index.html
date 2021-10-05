@@ -25,9 +25,22 @@
               <label for="kiad_ev">Kiadási év</label>
               <input type="number" class="form-control" id="kiad_ev">
             </div>
-            <button type="submit" class="btn btn-primary">Hozzáad</button>
-            <button type="submit" class="btn btn-info">Listázás</button>
+            <button onsubmit="" type="submit" class="btn btn-primary">Hozzáad</button>
+            <button onclick=""class="btn btn-info">Listázás</button>
           </form>
+    </div>
+    <div class="container" style="width: 50%; padding-top: 2.5vh;display: none;">
+        <table class="table">
+            <thead class="table-info">
+              <tr>
+                <th scope="col">Név</th>
+                <th scope="col">Rendező</th>
+                <th scope="col">Kiadási év</th>
+              </tr>
+            </thead>
+            <tbody id="table_body">
+            </tbody>
+          </table>
     </div>
 </body>
 </html>
