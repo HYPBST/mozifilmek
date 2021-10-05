@@ -16,6 +16,7 @@
         let lista=new Array();
         let torol=false;
         let elegans=true;
+        let mai_datum=new Date();
         class Film{
             constructor(nev,rendezo,kiadasi_ev){
                 this.nev=nev;
@@ -25,31 +26,22 @@
         }
 
         function submit(){
+            let tabla_szoveg="";
             let nev=document.getElementById("nev").value;
             let rendezo=document.getElementById("rendezo").value;
             let kiadasi_ev=document.getElementById("kiad_ev").value;
-            if(nev!=""&&rendezo!=""&&kiadasi_ev>0){
+            if(nev!=""&&rendezo!=""&&kiadasi_ev>0&&kiadasi_ev<=mai_datum.getFullYear()){
                 let f=new Film(nev,rendezo,kiadasi_ev);
                 lista.push(f);
-                document.getElementById("nev").value;
-                document.getElementById("rendezo").value;
-                document.getElementById("kiad_ev").value;
+                document.getElementById("nev").value="";
+                document.getElementById("rendezo").value="";
+                document.getElementById("kiad_ev").value="";
+                lista.forEach(Element => tabla_szoveg+="<tr><td>"+Element.nev+"</td><td>"+Element.rendezo+"</td><td>"+Element.kiadasi_ev+"</td></tr>")
+                document.getElementById("table_body").innerHTML=tabla_szoveg;
             }else{
                 alert("minden adatot ki kell tölteni és az év nem lehet nulla vagy kisebb");
             }
 
-        }
-        function tabla(){
-            let tabla_szoveg="";
-            if(!torol){
-                lista.forEach(Element => tabla_szoveg+="<tr><td>"+Element.nev+"</td><td>"+Element.rendezo+"</td><td>"+Element.kiadasi_ev+"</td></tr>")
-                document.getElementById("table_body").innerHTML=tabla_szoveg;
-                torol=true;
-            }else{
-                tabla_szoveg="";
-                document.getElementById("table_body").innerHTML=tabla_szoveg;
-                torol=false;
-            }
         }
     </script>
     <div class="container" style="width: 50%;">
@@ -69,7 +61,6 @@
             
           </form>
           <button onclick="submit()" class="btn btn-primary">Hozzáad</button>
-          <button onclick="tabla()"class="btn btn-info">Listázás</button>
     </div>
     <div class="container" style="width: 50%; padding-top: 2.5vh;" id="table">
         <table class="table">
